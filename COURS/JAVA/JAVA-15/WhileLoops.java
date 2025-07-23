@@ -19,11 +19,11 @@ public class WhileLoops {
         // Alternatively, you could use a do-while loop instead:
         // This loop runs the body *at least once*, then checks the condition
         /*
-        do {
-            System.out.print("Enter your name: ");
-            name = scanner.nextLine();
-        } while (name.isEmpty());
-        */
+         * do {
+         * System.out.print("Enter your name: ");
+         * name = scanner.nextLine();
+         * } while (name.isEmpty());
+         */
 
         // You could also display a confirmation message if needed
         System.out.println("Hello, " + name + "!");
