@@ -1,0 +1,158 @@
+"use strict";
+// 1. Type Annotations And Any Data Type
+Object.defineProperty(exports, "__esModule", { value: true });
+// let name: string = "MOUAD";
+// let age: number = 20;
+// let isStudent: boolean = true;
+// let all: any = "Elzero Web School";
+// function add(n1: number, n2: number) : number {
+//     return n1 + n2;
+// }
+// console.log(add(10, 20));
+// console.log(typeof add(10, 20));
+// 2. Type Annotations With Arrays
+// let all: string | number | boolean = "osama";
+// all = "A";
+// all = 100;
+// all = true;
+// let fruits: string[] = ["Apple", "Strawberry", "Orange"];
+// for (let i = 0; i < fruits.length; i++) {
+//     console.log(fruits[i]?.repeat(3));
+// }
+// 3. Type Annotations With Multidimensional Arrays
+// let arrayOne: number[] = [1, 2, 3, 4, 5];
+// let arrayTwo: string[] = ["A", "B", "C"];
+// let arrayThree: (string | number)[] = [1, 2, 3, "A", "B", "C"];
+// let arrayFour: (string | number | boolean | (string | number[])[])[] = [1, 2, 3, 4, "A", "B", ["C", "D", [5, 6, 7, 8]], true, false];
+// 4. Type Annotations With Function
+// let showMsg = true;
+// function showDetails(name: string, age: number, salary: number) : string {
+//     if (showMsg) {
+//         return `Hello ${name}, Age is ${age}, Salary is ${salary}$`;
+//     }
+//     return `No data to show`;
+// }
+// console.log(showDetails("MOUAD", 20, 8000));
+// 5. Function Optional and Default
+// function showData(name: string, age: number, country?: string) : string {
+//     return `${name} - ${age} - ${country}`;
+// }
+// console.log(showData("MOUAD", 20));
+// 6. Function Rest Parameter
+// function addAll(...nums: number[]) : number{
+//     let result = 0;
+//     // METHOD 1:
+//     // for (let i = 0; i < nums.length; i++) {
+//     //     result += nums[i]!;
+//     // }
+//     // METHOD 2:
+//     nums.forEach((num) => result += num);
+//     return result;
+// }
+// console.log(addAll(1, 2, 3, 4, 5, +true));
+// 7. Type Annotations With Anonymous And Arrow Function
+// const add = function(num1: number, num2: number) : number {
+//     return num1 + num2;
+// }
+// console.log(add(10, 20));
+// const addWithArrow = (num1: number, num2: number) : number => num1 + num2;
+// console.log(addWithArrow(10, 20));
+// 8. Data Types - Type Alias
+// type str = string;
+// let name: str = "mouad";
+// console.log(name);
+// console.log(typeof name);
+// type strNum = string | number;
+// let all: strNum = "ALL";
+// console.log(all);
+// console.log(typeof all);
+// all = 299;
+// console.log(all);
+// console.log(typeof all);
+// 9. Data Types - Type Alias Advanced
+// type Buttons = {
+//     up: string,
+//     down: string,
+//     right: string,
+//     left: string,
+// }
+// type Last = Buttons & {
+//     x: string,
+// }
+// function getActions(btns: Last) {
+//     console.log(`Action For Button "UP": ${btns.up}`);
+//     console.log(`Action For Button "DOWN": ${btns.down}`);
+//     console.log(`Action For Button "RIGHT": ${btns.right}`);
+//     console.log(`Action For Button "LEFT": ${btns.left}`);
+//     console.log(`Action For Button "X": ${btns.x}`);
+// }
+// getActions({up: "Accelerate", down: "Slow Down | Move Backward", right: "Go right", left: "Go left", x: "Nitro"});
+// 10. Data Types - Literal Types
+// type nums = 0 | 1 | -1;
+// function compare(num1: number, num2: number) : nums {
+//     if (num1 === num2) {
+//         return 0;
+//     } else if (num1 > num2) {
+//         return 1;
+//     } else {
+//         return -1;
+//     }
+// }
+// console.log(compare(20, 20));
+// console.log(compare(20, 15));
+// console.log(compare(20, 30));
+// 11. Data Types - Tuples
+// let manga: readonly [number, string, boolean] = [100, "Berserk", true];
+// manga = [10, "Vagabond", true];
+// // manga.push(100);
+// console.log(manga);
+// const [id, title, isPublished] = manga;
+// console.log(id);
+// console.log(title);
+// console.log(isPublished);
+// 12. Data Types - Void And Never
+// function loggIn(msg: string) : void {
+//     console.log(msg);
+// }
+// console.log(loggIn("Hi there!"));
+// const fail = (msg: string) : never => {
+//     throw new Error(msg);
+// }
+// console.log(fail);
+// 13. Data Types - Enums
+// // INSTEAD OF ADDING CONSTANT LIKE THAT WHICH TAKES MORE TIME AND MORE COMPLEX TO RIGHT
+// const KIDS = 15;
+// const EASY = 9;
+// const MEDIUM = 6;
+// const HARD = 3;
+// // WE CAN JUST GROUP THEM IN ENUMS
+// enum Kids {
+//     Five = 25,
+//     Seven = 20,
+//     Ten = 15,
+// }
+// const enum Levels {
+//     Kid = Kids.Ten,
+//     Easy = 9,
+//     Medium = 6,
+//     Hard = 3,
+// }
+// let lvl: string = "Easy";
+// if (lvl.toLowerCase() === "easy") {
+//     console.log(`The level is ${lvl} and Number of secs is ${Levels.Easy}seconds`);
+// }
+// 14. Data Types - Type Assertions
+// let myImg = document.getElementById("my-img") as HTMLImageElement; // Interface
+// let myImg = <HTMLImageElement> document.getElementById("my-img");
+// console.log(myImg.src);
+let data = 1000;
+console.log(data.repeat(2));
+// 15. Union And Intersection Types
+let all = 100;
+function getActions(btns) {
+    console.log(`Hello ${btns.one}`);
+    console.log(`Hello ${btns.two}`);
+    console.log(`Hello ${btns.three}`);
+}
+getActions({ one: "QWERTY", two: 123, three: true, five: false });
+//# sourceMappingURL=index.js.map
