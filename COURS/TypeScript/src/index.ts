@@ -208,37 +208,149 @@
 // let myImg = <HTMLImageElement> document.getElementById("my-img");
 // console.log(myImg.src);
 
-let data: any = 1000;
-console.log((data as string).repeat(2));
+// let data: any = 1000;
+// console.log((data as string).repeat(2));
 
 // 15. Union And Intersection Types
 
-let all: number | string = 100;
+// let all: number | string = 100;
 
-type A = {
-    one: string,
-    two: number,
-    three: boolean,
+// type A = {
+//     one: string,
+//     two: number,
+//     three: boolean,
+// }
+
+// type B = {
+//     four: number,
+// }
+
+// type C = {
+//     five: boolean,
+// }
+
+// type Mix = A & C;
+
+// function getActions(btns: Mix) {
+//     console.log(`Hello ${btns.one}`);
+//     console.log(`Hello ${btns.two}`);
+//     console.log(`Hello ${btns.three}`);
+// }
+
+// getActions({ one: "QWERTY", two: 123, three: true, five: false });
+
+// 16. Type Annotations With Object
+
+// let myObject: {
+//     readonly username: string,
+//     id: number,
+//     isStudent?: boolean,
+//     skills: {
+//         one: string,
+//         two: string,
+//         three: string
+//     }
+// } = {
+//     username: "Mouad",
+//     id: 1,
+//     skills: {
+//         one: "HTML",
+//         two: "CSS",
+//         three: "JS"
+//     }
+// }
+
+
+// console.log(myObject.username);
+
+// 17. Interface Declaration
+
+// interface User {
+//     id: number,
+//     username: string,
+//     country: string,
+// }
+
+// let user: User = {
+//     id: 100,
+//     username: "Mouad",
+//     coutnry: "MOROCCO"
+// }
+
+// console.log(user);
+
+// 18. Interface Method And Parameters
+
+// interface User {
+//     id: number,
+//     username: string,
+//     country: string,
+//     sayHello(): string,
+//     sayWelcome: () => string,
+//     getDouble(num: number): number
+// }
+
+// let user: User = {
+//     id: 100,
+//     username: "Mouad",
+//     country: "MOROCCO",
+//     sayHello() {
+//         return `Hello ${user.username}`
+//     },
+//     sayWelcome: () => {
+//         return `Welcome ${user.username}`
+//     },
+//     getDouble(num) {
+//         return num * 2
+//     },
+// }
+
+// console.log(user);
+
+// 19. Interface Reopen And Use Cases
+
+// interface Settings {
+//     theme: boolean,
+//     font: string
+// }
+
+// interface Settings {
+//     sidebar: boolean
+// }
+
+// interface Settings {
+//     external: boolean
+// }
+
+// let userSettings: Settings = {
+//     theme: true,
+//     font: "Open sans",
+//     sidebar: false,
+//     external: true
+// }
+
+// 20. Interface Extend
+
+interface User {
+    id: number,
+    username: string,
+    country: string
 }
 
-type B = {
-    four: number,
+interface Moderator extends User {
+    role: string | number
 }
 
-type C = {
-    five: boolean,
+interface Admin extends User, Moderator {
+    protect: boolean
 }
 
-type Mix = A & C;
-
-function getActions(btns: Mix) {
-    console.log(`Hello ${btns.one}`);
-    console.log(`Hello ${btns.two}`);
-    console.log(`Hello ${btns.three}`);
+let user: Admin = {
+    id: 100,
+    username: "MOUAD",
+    country: "Egypt",
+    role: "Admin",
+    protect: true
 }
 
-getActions({ one: "QWERTY", two: 123, three: true, five: false });
-
-
-
-
+console.log(user.id)
