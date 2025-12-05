@@ -331,26 +331,261 @@
 
 // 20. Interface Extend
 
-interface User {
-    id: number,
-    username: string,
-    country: string
+// interface User {
+//     id: number,
+//     username: string,
+//     country: string
+// }
+
+// interface Moderator extends User {
+//     role: string | number
+// }
+
+// interface Admin extends User, Moderator {
+//     protect: boolean
+// }
+
+// let user: Admin = {
+//     id: 100,
+//     username: "MOUAD",
+//     country: "Egypt",
+//     role: "Admin",
+//     protect: true
+// }
+
+// console.log(user.id)
+
+// 21. Class Type Annotations
+
+// class User {
+//     username: string;
+//     salary: number;
+//     msg: () => string;
+//     constructor(username: string, salary: number) {
+//         this.username = username;
+//         this.salary = salary;
+//         this.msg = function () {
+//             return `Hello ${this.username} your salary is ${this.salary}`;
+//         }
+//     }
+//     sayMsg() {
+//         return `Hello ${this.username} your salary is ${this.salary}`;
+//     }
+// }
+
+// let userOne = new User("Mouad", 6000);
+
+// console.log(userOne.username);
+// console.log(userOne.salary);
+// console.log(userOne.msg());
+// console.log(userOne.sayMsg());
+
+// 22.  Class Access Modifiers And Parameters Properties + Getters and Setters
+
+// class User {
+//     msg: () => string;
+//     constructor(private _username: string, public salary: number, public readonly address: string) {
+//         this.msg = function () {
+//             return `Hello ${this._username} your salary is ${this.salary}`;
+//         }
+//     }
+//     sayMsg() {
+//         return `Hello ${this._username} your salary is ${this.salary}`;
+//     }
+
+//     get username() : string {
+//         return this._username;
+//     }
+
+//     set username(value: string) {
+//         this._username = value;
+//     }
+// }
+
+// let userOne = new User("Mouad", 7000, "Sale");
+
+// console.log(userOne.salary);
+// console.log(userOne.msg());
+// console.log(userOne.sayMsg());
+
+// 23. Class Static Members
+
+// class User {
+//     private static created: number = 0;
+//     static getCount() : void {
+//         console.log(`${this.created} Objects Created`)
+//     }
+
+//     constructor(public username: string) {
+//         User.created++;
+//     }
+// }
+
+// let u1 = new User("Mouad");
+// let u2 = new User("Simo");
+// let u3 = new User("Ilias");
+
+// User.getCount();
+
+// 24. Class Implements Interface
+
+// interface Settings {
+//     theme: boolean;
+//     font?: string;
+//     save(): void;
+// }
+
+// class User implements Settings {
+//     constructor(public username: string, public theme: boolean) { }
+//     save(): void {
+//         console.log("Saved");
+//     }
+
+//     update(): void {
+//         console.log("Updated");
+//     }
+// }
+
+// let userOne = new User("Elzero", true);
+
+// 25. Abstract Classes And Members
+
+// abstract class Food {
+//     constructor(public title: string) { }
+//     abstract getCookingTime(): void;
+// }
+
+// class Pizza extends Food {
+//     constructor(public title: string, public price: number) {
+//         super(title);
+//     }
+//     getCookingTime(): void {
+//         console.log("Cooking time is 1h (Pizza)");
+//     }
+// }
+
+// class Burger extends Food {
+//     getCookingTime(): void {
+//         console.log("Cooking time is 30min (Burger)");
+//     }
+// }
+
+// 26. Polymorphism And Method Override
+
+// class Player {
+//     constructor(public name: string) { }
+//     attack(): void {
+//         console.log("Attacking now");
+//     }
+// }
+
+// class Amazon extends Player {
+//     constructor(name: string, public spears: number) {
+//         super(name);
+//     }
+//     override attack(): void {
+//         console.log("Attacking with spear");
+//         this.spears -= 1;
+//     }
+// }
+
+
+// class Barbarien extends Player {
+//     constructor(name: string, public axeDurability: number) {
+//         super(name);
+//     }
+//     override attack(): void {
+//         console.log("Attacking with axe");
+//         this.axeDurability -= 1;
+//     }
+// }
+
+// 27. Generics
+
+// function returnType<T>(value: T) : T {
+//     return value;
+// }
+
+// console.log(returnType<number>(100));
+// console.log(returnType<string>("Mouad"));
+// console.log(returnType<boolean>(true));
+// console.log(returnType<number[]>([1, 2, 3, 4]));
+
+// 28. Generics Multiple Types
+
+// const returnTypeArrowSyntax = <T>(value: T): T => value;
+
+// function testType<T, S>(value: T, secValue: S): string {
+//     return `The value is ${value} And The second value is ${secValue}`;
+// }
+
+// console.log(testType<number, boolean>(100, false));
+
+// 29.  Generics Classes
+
+// class User<T = string> {
+//     constructor(public value: T){}
+//     show(msg: T) : void {
+//         console.log(`${msg} - ${this.value}`);
+//     }
+// }
+
+// let userOne = new User<number | string>("Mouad");
+
+// userOne.show("Salam ana smiti");
+
+// 30. Generics And Interfaces
+
+interface Book {
+    itemType: string;
+    title: string;
+    isbn: number;
 }
 
-interface Moderator extends User {
-    role: string | number
+interface Game {
+    itemType: string;
+    title: string;
+    style: string;
+    price: number;
 }
 
-interface Admin extends User, Moderator {
-    protect: boolean
+class Collection<T> {
+    public data: T[] = [];
+    add(item: T): void {
+        this.data.push(item);
+    }
 }
 
-let user: Admin = {
-    id: 100,
-    username: "MOUAD",
-    country: "Egypt",
-    role: "Admin",
-    protect: true
-}
+let itemOne = new Collection<Book>();
 
-console.log(user.id)
+itemOne.add({
+    itemType: "Manga",
+    title: "Berserk",
+    isbn: 274648,
+});
+
+itemOne.add({
+    itemType: "Manga",
+    title: "Vagabod",
+    isbn: 563927,
+});
+
+console.log(itemOne);
+
+let itemTwo = new Collection<Game>();
+
+itemTwo.add({
+    itemType: "Game",
+    title: "Flatout",
+    style: "Racing",
+    price: 20
+})
+
+itemTwo.add({
+    itemType: "Game",
+    title: "Elden ring",
+    style: "souls",
+    price: 69
+})
+
+console.log(itemTwo);
