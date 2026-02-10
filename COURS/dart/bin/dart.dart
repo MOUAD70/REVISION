@@ -98,7 +98,7 @@ void main(List<String> arguments) {
 
   // Control Flow:
 
-  List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   // for (int i = 0; i < numbers.length; i++) {
   //   print("The current value of i is $i, the value of the element in the numbers array is ${numbers[i]} ");
@@ -110,9 +110,50 @@ void main(List<String> arguments) {
   //   }
   // }
 
-
   // This is cool!
-  for (int number in numbers.where((num) => num > 5)) {
-    print("The number is $number");
-  }
+  // for (int number in numbers.where((num) => num > 5)) {
+  //   print("The number is $number");
+  // }
+
+  // Maps:
+
+  // Map<int, String> names = {1: "Mouad", 2: "Ilias", 3: "Simo"};
+
+  // names.forEach((key, value) => print("Key: $key, Value: $value"));
+  // names[1] = "Saad";
+  // print(names);
+
+  // print(names.containsKey(5));
+  // print(names.remove(1));
+  // print(names.keys);
+  // print(names.values);
+  // print(names);
+
+  // Classes:
+
+  // var noodles = MenuItem("noodles", 5.99);
+  // var pizza = Pizza(["mushrooms", "pepers"], "veg volcano", 15.99);
+
+  // print(noodles.format());
+  // print(pizza.format());
 }
+
+// Classes:
+
+// class MenuItem {
+//   String? title;
+//   double? price;
+
+//   MenuItem(this.title, this.price);
+
+//   String format() {
+//     return "$title -> $price";
+//   }
+// }
+
+// class Pizza extends MenuItem {
+//   List<String> toppings;
+
+//   // Pizza(this.toppings, String title, double price) : super(title, price);
+//   Pizza(this.toppings, super.title, super.price);
+// }
