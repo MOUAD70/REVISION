@@ -1,4 +1,4 @@
-void main(List<String> arguments) {
+void main(List<String> arguments) async {
   // Variables:
 
   // var name = "MOUAD";
@@ -136,6 +136,38 @@ void main(List<String> arguments) {
 
   // print(noodles.format());
   // print(pizza.format());
+
+  // Method Overriding:
+
+  // var noodles = MenuItem("noodles", 5.99);
+  // var pizza = Pizza(["mushrooms", "pepers"], "veg volcano", 15.99);
+
+  // print(noodles.format());
+  // print(pizza.format());
+  // print(noodles.toString());
+  // print(pizza.toString());
+
+  // Generics:
+
+  // var noodles = MenuItem("noodles", 5.99);
+  // var pizza = Pizza(["mushrooms", "pepers"], "veg volcano", 15.99);
+
+  // // print(noodles.format());
+  // // print(pizza.format());
+  // // print(noodles.toString());
+  // // print(pizza.toString());
+
+  // var foods = Collection<MenuItem>("MenuItems", ['noodles', 'pizza', 'roast', 'kebab']);
+
+  // print(foods.randomItem());
+
+  // Async Await in Dart:
+
+  fetchPost().then((post) => {print("${post.title} ${post.userId}")});
+
+  final post = await fetchPost();
+  print(post.title);
+  print(post.userId);
 }
 
 // Classes:
@@ -157,3 +189,93 @@ void main(List<String> arguments) {
 //   // Pizza(this.toppings, String title, double price) : super(title, price);
 //   Pizza(this.toppings, super.title, super.price);
 // }
+
+// Method Overriding
+
+// class MenuItem {
+//   String? title;
+//   double? price;
+
+//   MenuItem(this.title, this.price);
+
+//   String format() {
+//     return "$title -> $price";
+//   }
+
+//   @override
+//   String toString() {
+//     return format();
+//   }
+// }
+
+// class Pizza extends MenuItem {
+//   List<String> toppings;
+
+//   // Pizza(this.toppings, String title, double price) : super(title, price);
+//   Pizza(this.toppings, super.title, super.price);
+
+//   @override
+//   String format() {
+//     var formatedTopping = 'Contains: ';
+
+//     for (final t in toppings) {
+//       formatedTopping = '$formatedTopping $t';
+//     }
+//     return '$title -> $price DH \n$formatedTopping';
+//   }
+
+//   @override
+//   String toString() {
+//     return "Instance of Pizza: $title, $price, $toppings";
+//   }
+// }
+
+// Generics:
+
+// class MenuItem {
+//   String? title;
+//   double? price;
+
+//   MenuItem(this.title, this.price);
+
+//   String format() {
+//     return "$title -> $price";
+//   }
+// }
+
+// class Pizza extends MenuItem {
+//   List<String> toppings;
+
+//   // Pizza(this.toppings, String title, double price) : super(title, price);
+//   Pizza(this.toppings, super.title, super.price);
+// }
+
+// class Collection<T> {
+//   String name;
+//   List<T> data;
+
+//   Collection(this.name, this.data);
+
+//   T randomItem() {
+//     data.shuffle();
+
+//     return data[0];
+//   }
+// }
+
+// Async Await in Dart:
+
+Future<Post> fetchPost() {
+  const delay = Duration(seconds: 3);
+
+  return Future.delayed(delay, () {
+    return Post('My Post', 123);
+  });
+}
+
+class Post {
+  String title;
+  int userId;
+
+  Post(this.title, this.userId);
+}
